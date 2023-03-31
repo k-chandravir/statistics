@@ -18,4 +18,8 @@ public class Probability {
         Probability that = (Probability) probabilityObject;
         return this.probabilityOfEvent == that.probabilityOfEvent;
     }
+
+    public Probability probabilityOfTwoEventsTogether(Probability onesProbability) {
+        return new Probability(this.probabilityOfEvent * onesProbability.probabilityOfEvent);
+    }
 }

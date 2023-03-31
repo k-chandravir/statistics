@@ -15,4 +15,21 @@ public class ProbabilityTest {
 
         assertThat(headProbability, is(equalTo(tailProbability)));
     }
+
+    @Test
+    void toReturnZeroPointZeroEightWhenProbabilityOfHeadIsZeroPointFiveAndProbabilityOfOneInDieIsZeroPointOneSix(){
+        Probability headProbability = new Probability(0.5);
+        Probability onesProbability = new Probability(0.16);
+        Probability probabilityOfHeadAndOneTogether = new Probability(0.08);
+
+        assertThat(headProbability.probabilityOfTwoEventsTogether(onesProbability), is(equalTo(probabilityOfHeadAndOneTogether)));
+    }
+    @Test
+    void toReturnOneWhenProbabilityOfEventOneIsOneAndProbabilityOfEventTwoIsOne(){
+        Probability eventOne = new Probability(1);
+        Probability eventTwo = new Probability(1);
+        Probability probabilityOfHeadAndOneTogether = new Probability(0.08);
+
+        assertThat(eventOne.probabilityOfTwoEventsTogether(eventTwo), is(equalTo(probabilityOfHeadAndOneTogether)));
+    }
 }
