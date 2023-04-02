@@ -1,6 +1,7 @@
 package com.m2p;
 
 public class Probability {
+    private static final int CERTAIN_PROBABILITY_EVENT = 1;
     private final double probabilityOfEvent;
     public Probability(double probabilityOfTheEvent) {
         this.probabilityOfEvent = probabilityOfTheEvent;
@@ -11,7 +12,7 @@ public class Probability {
         if(this == probabilityObject){
             return true;
         }
-        if(this.getClass() != probabilityObject.getClass()){
+        if(probabilityObject == null || this.getClass() != probabilityObject.getClass()){
             return false;
         }
 
@@ -19,7 +20,11 @@ public class Probability {
         return this.probabilityOfEvent == that.probabilityOfEvent;
     }
 
-    public Probability probabilityOfTwoEventsTogether(Probability onesProbability) {
-        return new Probability(this.probabilityOfEvent * onesProbability.probabilityOfEvent);
+    public Probability and(Probability otherEvent) {
+        return new Probability(this.probabilityOfEvent * otherEvent.probabilityOfEvent);
+    }
+
+    public Probability not() {
+        return new Probability(CERTAIN_PROBABILITY_EVENT - this.probabilityOfEvent);
     }
 }
