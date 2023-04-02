@@ -27,4 +27,8 @@ public class Probability {
     public Probability not() {
         return new Probability(CERTAIN_PROBABILITY_EVENT - this.probabilityOfEvent);
     }
+
+    public Probability or(Probability anotherEvent) {
+        return ((this.not()).and((Probability) anotherEvent)).not();
+    }
 }

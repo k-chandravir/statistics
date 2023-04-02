@@ -85,10 +85,13 @@ public class ProbabilityTest {
         }
     }
 
-//    @Nested
-//    class Or{
-//        @Test
-//        void to
-//    }
+    @Nested
+    class Or{
+        @Test
+        void toGetACertainEventWhenEitherCertainOrImpossibleEventsHappen(){
+            assertThat(probabilityOfCertainEvent.or(probabilityOfImpossibleEvent), is(equalTo(probabilityOfCertainEvent)));
+        }
+
+    }
 
 }
